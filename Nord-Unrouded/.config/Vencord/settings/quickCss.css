@@ -1,0 +1,44 @@
+
+
+* {
+    font-family: JetBrainsMono Nerd Font;
+}
+// Theme adjustments for System24Nord
+:root {
+  // Darker base but slightly lighter than original
+  --background-primary: #1a1b1e;
+  --background-secondary: #1e1f23;
+  
+  // Border and radius styles
+  --border-radius: 4px; // Subtle rounded corners
+  --border-color: rgba(255,255,255,0.1);
+  
+  // Font
+  --font-primary: "JetBrainsMono Nerd Font", monospace;
+  
+  // Disable hover effects
+  * { 
+    &:hover {
+      background: none !important;
+      border-color: var(--border-color) !important;
+    }
+  }
+  
+  // Square-circle styles
+  .avatar-1BDn8e, .icon-27yU2q, .wrapper-3t9DeA {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+  }
+  
+  // Server list fixes
+  .guildIcon-gugWvC {
+    border-radius: var(--border-radius);
+    transform: none !important; // Fix rotation bug
+  }
+  
+  // Radial status integration
+  .status-1fhblQ {
+    mask: none;
+    border-radius: var(--border-radius);
+  }
+}

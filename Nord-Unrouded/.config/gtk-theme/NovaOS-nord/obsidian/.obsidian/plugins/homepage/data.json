@@ -1,0 +1,18 @@
+{
+  "version": 3,
+  "homepages": {
+    "Main Homepage": {
+      "version": 2,
+      "hasRibbonIcon": true,
+      "openMode": "Replace all open notes",
+      "view": "Default view",
+      "refreshDataview": false,
+      "value": "Scratchpad",
+      "kind": "File",
+      "commands": [],
+      "openOnStartup": true,
+      "hideReleaseNotes": false
+    }
+  },
+  "separateMobile": false
+}

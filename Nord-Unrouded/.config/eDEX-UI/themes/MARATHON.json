@@ -1,0 +1,46 @@
+{
+    "colors": {
+        "r": 167,
+        "g": 255,
+        "b": 0,
+        "black": "#000000",
+        "light_black": "#000000",
+       "grey": "#000000",
+        "red": "#eb0954",
+       "green": "#a7ff00",
+        "yellow": "#000000",
+       "blue": "#eb0954",
+        "magenta": "#000000",
+        "cyan": "#FFD700",
+       "white": "#FFD700",
+        "brightBlack": "#b9f30d",
+        "brightRed": "#b9f30d",
+       "brightGreen": "#b9f30d",
+        "brightYellow": "#eb0954",
+        "brightBlue": "#FFD7000",
+        "brightMagenta": "#000000",
+        "brightCyan": "#FFD700",
+        "brightWhite": "#b9f30d"
+    },
+    "cssvars": {
+        "font_main": "Durandal Grotesque",
+        "font_main_light": "Durandal Grotesque"
+    },
+    "terminal": {
+        "fontFamily": "Durandal Grotesque",
+        "fontSize": 20,
+        "cursorStyle": "block",
+       "foreground": "#b9f30d",
+        "background": "#000000",
+       "cursor": "#b9f30d",
+       "cursorAccent": "#000000",
+       "selection": "rgba(0, 0, 0, 0.5)"
+    },
+    "globe": {
+        "base": "#b9f30d",
+       "marker": "#eb0954",
+        "pin": "#FFD700",
+        "satellite": "#007BFF"
+    },
+    "injectCSS": "body {\n  background-color: #a7ff00;\n}\n\n.window-content {\n  background-color: rgba(0, 0, 0, 0.0); /* Transparent  background for content */\n  border: 2px solid #000000;\n}\n\n.terminal {\n    border: 2px solid #000000;\n    border-radius: 8px; /* Rounded corners for the terminal*/\n    background-color: rgba(0,0,0,0.0);\n  }\n\n.terminal-text-output {\n      color: #000000;\n    }\n\n.keyboard {\n  border: 2px solid #000000;\n     background-color: rgba(0,0,0,0.0);\n\n}\n\n.keyboard-key {\n      color: #000000;\n      font-family: 'Durandal Grotesque';\n        font-size: 18px;\n  }\n\n.keyboard-key:active {\n    background-color: #000000;\n     color: #000000;\n  }\n\n.filesystem-browser-folder, .filesystem-browser-file {\n      color: #000000;\n    font-size: 18px;\n  }\n\n  .top-processes-list-header-item, .top-processes-list-item, .system-info-item {\n  color: #000000;\n  font-size: 18px;\n  }\n  .terminal-tab-label {\n       color: #000000;\n     font-size: 18px;\n    }\n\n    .filesystem-browser-item:hover, .top-processes-list-item:hover, .system-info-item:hover, .terminal-tab-label:hover  {\n        background-color: rgba(0,0,0, 0.2);\n    }\n\n.window-content::-webkit-scrollbar-thumb {\n     background-color: #000000;\n}\n"
+}

@@ -1,0 +1,381 @@
+/* -----------------------------------------------------------------------------
+Desc: UI-Tweaks for the Obsidian application to match VSCode.
+      Should be used with the minimal theme.
+
+Auth: Nicklas Vraa
+----------------------------------------------------------------------------- */
+
+/* UI: ---------------------------------------------------------------------- */
+body {
+    /* Removes all rounded corners. */
+    --radius-m: 0;
+    --input-radius: 0;
+    --file-margins: 8px;
+}
+
+body:not(.is-mobile) .modal,
+.prompt,
+.modal {
+    border: none;
+    border-radius: 0px;
+}
+
+.side-dock-ribbon {
+    display: block;
+}
+
+.side-dock-actions,
+.side-dock-settings {
+    margin-bottom: 8px;
+}
+
+.minimal-status-off .status-bar {
+    color: #D8DEE9;
+    background-color: #3b4252;
+    border-top: 0px;
+    padding-top: 3px;
+}
+
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-reading-view>.markdown-preview-view {
+    padding-top: 0px;
+    margin-top: 10px;
+}
+
+.workspace-ribbon.mod-left {
+    width: 20px;
+}
+
+.mod-root .workspace-tab-header-container-inner {
+    padding-left: 6px;
+    margin-top: 0px;
+}
+
+.workspace .mod-root .workspace-tab-header {
+    padding: 0px;
+}
+
+.mod-root .workspace-tab-header-inner {
+    padding: 2px 6px 0 12px;
+}
+
+.markdown-source-view.mod-cm6:not(.is-readable-line-width) .cm-contentContainer,
+.markdown-reading-view .markdown-preview-view:not(.is-readable-line-width)>.markdown-preview-sizer {
+    margin: 0 0 0 20px !important;
+}
+
+.nav-file-title {
+    margin-bottom: 0px !important;
+    padding-bottom: 2px !important;
+}
+
+.nav-folder-title {
+    margin-bottom: 0px !important;
+    padding-bottom: 2px !important;
+    margin-left: -18px !important;
+}
+
+.minimal-status-off .status-bar {
+    font-size: 10pt !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+}
+
+.status-bar-item {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.cm-gutters {
+    padding-right: 0px !important;
+}
+
+
+/* GRAPH: ------------------------------------------------------------------- */
+.graph-view.color-fill-attachment {
+    opacity: 1;
+}
+
+.graph-view.color-line {
+    color: white !important;
+    opacity: 0.2;
+}
+
+.markdown-source-view.mod-cm6 .cm-content>* {
+    margin: auto auto !important;
+}
+
+/* EDITOR: ------------------------------------------------------------------ */
+
+/* Adds vertical breathing room for tables. */
+table {
+    margin: 0px 0px 0px 10px !important;
+}
+
+/* Adjust spacing around images. */
+img {
+    margin: 0px 0px 0px 10px !important;
+}
+
+/* Align math blocks to the left. */
+mjx-container[display="true"] {
+    text-align: left !important;
+    padding: 10px 10px 0px !important;
+    font-size: 120%;
+}
+
+/* Makes code block language specifier less intrusive. */
+.code-block-flair {
+    font-size: 10px !important;
+    opacity: 0.5 !important;
+}
+
+.cm-line.HyperMD-codeblock {
+    padding-left: 8px !important;
+}
+
+/* Adds padding around list elements. */
+.HyperMD-list-line {
+    padding-top: 5px !important;
+    padding-bottom: 2px !important;
+    padding-right: 14px !important;
+}
+
+/* Turns bullet point into squares and improves alignment. */
+.list-bullet:after {
+    height: 0.3em !important;
+    width: 0.3em !important;
+    border-radius: 0 !important;
+}
+
+/* Fixes indentation for bullet-point lists. */
+.cm-formatting-list-ul {
+    margin-right: 10px !important;
+}
+
+/* Fixes indentation for numbered lists. */
+.cm-formatting-list-ol {
+    margin-right: 10px !important;
+}
+
+/* Makes quote blocks less prominent. */
+.cm-quote {
+    opacity: 60% !important;
+}
+
+/* Remove padding before headers. */
+.cm-s-obsidian .cm-line.HyperMD-header {
+    padding-top: 0px !important;
+}
+
+.list-bullet {
+    list-style-type: square !important;
+}
+
+/* Use-case specific styling. --------------------------------------------- */
+
+@media not print {
+    /* Invert image colors for dark theme, but not when exporting to PDF. */
+    img {
+        filter: invert(100%) !important;
+    }
+}
+
+/* Page break rules when exporting to PDF. */
+@media print {
+
+    /* Document-wide. ------------------------------------------------------- */
+    @page { /* Page structure. */
+        margin: 2cm !important;
+    }
+
+    a:link, a:visited, a { /* Links. */
+        color: black !important;
+        text-decoration: none !important;
+    }
+
+    /* Main body of text. --------------------------------------------------- */
+    body {
+        tab-size: 4 !important;
+        --code-background: white !important;
+        --code-normal: black !important;
+    }
+
+    p {
+        font-family: "Latin Modern Roman" !important;
+        font-size: 10pt !important;
+        text-align: justify !important;
+        line-height: 1.2 !important;
+        margin-top: 5px !important;
+    }
+
+    strong {
+        font-weight: bold !important;
+    }
+
+    /* Header styling and automatic numbering. ------------------------------ */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: "Latin Modern Roman" !important;
+        color: black !important;
+        page-break-after:avoid;
+        page-break-inside:avoid;
+        font-size: 12pt !important;
+        font-weight: bold !important;
+        line-height: 1 !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+        margin-top: 20px !important;
+    }
+
+    h1 { /* Title. */
+        font-family: "Latin Modern Roman Caps" !important;
+        /*text-align: center !important;*/
+        font-size: 18pt !important;
+        font-weight: normal !important;
+        margin-top: 0px !important;
+        counter-reset: H2;
+    }
+
+    /* Subtitle.
+    h6 {
+        font-family: "Latin Modern Roman Caps" !important;
+        text-align: center !important;
+        font-size: 11pt !important;
+        font-weight: normal !important;
+        margin-top: 6px !important;
+    }
+    */
+
+    h2:before {
+        counter-increment: H2;
+        content: counter(H2) ". \0000a0";
+    }
+
+    h2 {counter-reset: H3;}
+    h3:before {
+        counter-increment: H3;
+        content: counter(H2) "." counter(H3) ". \0000a0";
+    }
+
+    h3 {counter-reset: H4;}
+    h4:before {
+        counter-increment: H4;
+        content: counter(H2) "." counter(H3) "." counter(H4) ". \0000a0";
+    }
+
+    /* Code and math blocks.------------------------------------------------- */
+    pre { /* background and border of block. */
+        background-color: #fff !important;
+        border-style: dashed !important;
+        border-radius: 0px !important;
+        border-width: 1px 0px !important;
+        border-color: darkgray !important;
+        line-height: 1 !important;
+    }
+
+    code {
+        font-family: "Latin Modern Mono" !important;
+        font-size: 10pt !important;
+        color: #292929 !important;
+    }
+
+    mjx-math {
+        font-size: 90% !important;
+    }
+
+    math-block {
+        page-break-before: avoid !important;
+    }
+
+    /* Figures. ------------------------------------------------------------- */
+    svg, img {
+        display: block !important;
+        page-break-inside: avoid !important;
+        page-break-after: avoid !important;
+        margin: 10px auto 5px !important;
+    }
+
+    figcaption {
+        font-family: "Latin Modern Roman" !important;
+        text-align: center !important;
+        margin-bottom: 16px !important;
+        font-size: 8pt !important;
+    }
+
+    /* Tables. -------------------------------------------------------------- */
+    table, pre {
+        page-break-inside: avoid !important;
+    }
+
+    table {
+        font-family: Times !important;
+        font-size: 10pt !important;
+        text-align: center !important;
+        margin: 10px auto 5px !important;
+        border-top: 1px solid #292929 !important;
+        border-bottom: 1px solid #292929 !important;
+    }
+
+    th { /* Table headers. */
+        color: black !important;
+        font-weight: normal !important;
+        border: none !important;
+        border-bottom: 1px solid darkgray !important;
+        padding: 2px 5px !important;
+    }
+
+    td {
+        border: none !important;
+        padding: 2px 5px !important;
+    }
+
+    /* Lists ---------------------------------------------------------------- */
+    ul, ol, dl {
+        page-break-before: avoid !important;
+        font-family: "Latin Modern Roman" !important;
+        font-size: 11pt !important;
+        line-height: 1.1 !important;
+        margin-top: 0px !important;
+        padding-top: 0px !important;
+    }
+
+    ul li { /* Adjusts size of bullet points. */
+        list-style-type: none !important;
+        position: relative !important;
+        font-family: "Latin Modern Roman" !important;
+        font-size: 10pt !important;
+        text-align: justify !important;
+        line-height: 1.2 !important;
+        margin-top: 5px !important;
+    }
+
+    ul li::before {
+        content: '•' !important;
+        position: absolute !important;
+        left: -1.15em !important;
+        top: -0.05em !important;
+        font-size: 1.1em !important;
+    }
+
+    /* Horizontal separator. ------------------------------------------------ */
+    hr { /* Manual page-break using "---". */
+        border: none !important;
+        border-top: 0px solid lightgray !important;
+        page-break-after: always !important;
+    }
+
+    /* Additional settings. ------------------------------------------------- */
+    blockquote {
+        display: block !important;
+        text-align: center !important;
+        font-size: 10pt !important;
+        color: black !important;
+        border: none !important;
+        padding: 0px !important;
+        margin: 5px auto !important;
+    }
+
+    .mermaid { /* Inline diagrams. */
+        color: black !important;
+    }
+}

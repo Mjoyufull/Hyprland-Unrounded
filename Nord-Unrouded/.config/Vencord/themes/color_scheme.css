@@ -1,0 +1,74 @@
+/**
+ * @name system24
+ * @description A tui-style discord theme with neon green (#B9F30D) as primary and black (#000000) as secondary/accent
+ * @version 1.0.0
+ */
+
+/* import theme modules */
+@import url('https://refact0r.github.io/system24/src/main.css'); /* main theme css. DO NOT REMOVE */
+@import url('https://refact0r.github.io/system24/src/unrounding.css'); /* gets rid of all rounded corners. remove if you want rounded corners. */
+
+/* customize things here */
+:root {
+    --font: 'DM Mono'; /* UI font name. it must be installed on your system. */
+    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. */
+    font-weight: 300; /* UI font weight. */
+    --label-font-weight: 500; /* font weight for panel labels. */
+    --corner-text: 'system24'; /* custom text to display in the corner. only works on windows. */
+    --pad: 16px; /* padding between panels. */
+    --txt-pad: 10px; /* padding inside panels to prevent labels from clipping */
+    --panel-roundness: 0px; /* corner roundness of panels. ONLY WORKS IF unrounding.css IS REMOVED (see above). */
+
+    /* background colors */
+    --bg-0: #B9F30D; /* primary neon green background */
+    --bg-1: #A6D400; /* slightly darker green for secondary elements (less harsh) */
+    --bg-2: #8BBF00; /* even darker green for neutral buttons */
+    --bg-3: #78A600; /* background color for buttons when hovered, still green, but muted */
+
+    /* state modifiers */
+    --hover: rgba(0, 0, 0, 0.1); /* color of hovered elements */
+    --active: rgba(0, 0, 0, 0.2); /* color of elements when clicked */
+    --selected: var(--active); /* color of selected elements */
+
+    /* text colors */
+    --txt-dark: #000000; /* black text on neon green background */
+    --txt-link: #000000; /* black links */
+    --txt-0: #000000; /* bright text in black */
+    --txt-1: #000000; /* main text in black */
+    --txt-2: #333333; /* secondary text in a dark gray (to soften the contrast) */
+    --txt-3: #555555; /* muted text in even darker gray (less harsh on the eyes) */
+
+    /* accent colors */
+    --acc-0: #000000; /* black for accents like borders and icons */
+    --acc-1: #333333; /* dark gray for accent buttons when hovered */
+    --acc-2: #444444; /* darker gray for accent buttons when clicked */
+
+    /* borders */
+    --border-width: 2px; /* panel border thickness */
+    --border-color: #333333; /* dark gray for borders */
+    --border-hover-color: #000000; /* black borders when hovered */
+    --border-transition: 0.2s ease; /* panel border transition */
+
+    /* status dot colors */
+    --online-dot: #B9F30D; /* primary neon green for online dot */
+    --dnd-dot: #D2007F; /* bright pink for DND dot */
+    --idle-dot: #F5D500; /* yellow for idle dot */
+    --streaming-dot: #AA00FF; /* purple for streaming dot */
+
+    /* mention/ping and message colors */
+    --mention-txt: #000000; /* black mention text */
+    --mention-bg: rgba(0, 0, 0, 0.1); /* black background for mentions */
+    --mention-overlay: rgba(0, 0, 0, 0.1); /* overlay for mentions */
+    --mention-hover-overlay: rgba(0, 0, 0, 0.2); /* overlay for mentions when hovered */
+    --reply-overlay: var(--active); /* overlay for replying messages */
+    --reply-hover-overlay: var(--hover); /* overlay for replying messages when hovered */
+
+    /* color shades */
+    --pink: #D2007F; /* pink for accent features */
+    --purple: #AA00FF; /* purple for accent features */
+    --cyan: #00C0FF; /* cyan for accent features */
+    --yellow: #F5D500; /* yellow for accent features */
+    --green: #B9F30D; /* primary neon green for overall elements */
+    --green-1: #A6D400; /* muted green for less intrusive elements */
+    --green-2: #8BBF00; /* deeper green for contrast */
+}

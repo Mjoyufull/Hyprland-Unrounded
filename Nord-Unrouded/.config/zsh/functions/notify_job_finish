@@ -1,0 +1,60 @@
+# vim: filetype=zsh
+format_seconds() {
+    local total_seconds=$1
+    local hours=$((total_seconds / 3600))
+    local minutes=$(((total_seconds % 3600) / 60))
+    local seconds=$((total_seconds % 60))
+    local result=""
+
+    if ((hours > 0)); then
+        result+="${hours}h"
+    fi
+
+    if ((hours > 0 || minutes > 0)); then
+        result+="$(printf "%02dm" $minutes)"
+        result+="$(printf "%02ds" $seconds)"
+    else
+        result+="$(printf "%ds" $seconds)"
+    fi
+
+    echo $result
+}
+
+notify_job_finish() {
+    [[ -z "$JOB_START_SECONDS" ]] && return
+
+    local THRESHOLD=30 # seconds
+    local CMD_MAX_CHARS=32
+
+    local elapsed_time="$((SECONDS - JOB_START_SECONDS))"
+    unset JOB_START_SECONDS
+
+    [[ "$elapsed_time" -lt "$THRESHOLD" ]] && return
+
+    local last_cmd=$(fc -ln -1)
+    local trimmed_cmd=${last_cmd:0:$CMD_MAX_CHARS}
+    if [[ ${#last_cmd} -gt $CMD_MAX_CHARS ]]; then
+        trimmed_cmd+="…"
+    fi
+
+    local -a ignored_cmds=(nvim lf man mpv)
+    for ignored_cmd in $ignored_cmds; do
+        if [[ "$last_cmd" =~ ^"$ignored_cmd".* ]]; then
+            return
+        fi
+    done
+
+    running_in_hyprland && foot_active_window && tmux_pane_visible && return
+
+    if running_in_hyprland; then
+        notify-send \
+            "$(printf 'zsh on %s' "$TTY")" \
+            "$(printf '%s\ndone in %s, retcode %d' \
+                "$trimmed_cmd" \
+                "$(format_seconds "$elapsed_time")" \
+                "$LAST_JOB_EXIT_STATUS")"
+    fi
+
+    printf '\n󱑎 Finished in %s with exit code %d\n' \
+        "$(format_seconds "$elapsed_time")" "$LAST_JOB_EXIT_STATUS"
+}

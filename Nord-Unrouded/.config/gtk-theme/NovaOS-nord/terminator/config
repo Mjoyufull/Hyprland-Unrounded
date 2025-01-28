@@ -1,0 +1,75 @@
+[global_config]
+  title_hide_sizetext = True
+  title_transmit_fg_color = "#d8dee9"
+  title_transmit_bg_color = "#2b313c"
+  title_receive_fg_color = "#d8dee9"
+  title_receive_bg_color = "#2b313c"
+  title_inactive_fg_color = "#d8dee9"
+  title_inactive_bg_color = "#2b313c"
+  inactive_color_offset = 1.0
+  suppress_multiple_term_dialog = True
+  title_use_system_font = False
+  title_font = Fira Code 9
+[keybindings]
+  new_tab = <Primary>t
+  go_next = None
+  go_prev = None
+  rotate_cw = None
+  rotate_ccw = None
+  split_horiz = <Primary><Alt>Down
+  split_vert = <Primary><Alt>Right
+  close_term = None
+  copy = <Primary>c
+  paste = <Primary>v
+  toggle_scrollbar = None
+  search = <Primary><Shift>f
+  page_up_half = None
+  close_window = None
+  resize_up = None
+  resize_down = None
+  resize_left = None
+  resize_right = None
+  move_tab_right = None
+  move_tab_left = None
+  toggle_zoom = None
+  scaled_zoom = None
+  next_tab = None
+  prev_tab = None
+  full_screen = None
+  reset = None
+  reset_clear = None
+  hide_window = None
+  group_all = None
+  ungroup_all = None
+  group_tab = None
+  ungroup_tab = None
+  new_window = None
+  new_terminator = None
+  insert_number = None
+  insert_padded = None
+  edit_window_title = None
+  edit_tab_title = None
+  edit_terminal_title = None
+  layout_launcher = None
+  help = None
+[profiles]
+  [[default]]
+    cursor_shape = ibeam
+    cursor_color = "#aaaaaa"
+    font = Monospace 9
+    show_titlebar = False
+    scrollbar_position = hidden
+    scrollback_lines = 2000
+    palette = "#2e3440:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#88c0d0:#d8dee9:#2e3440:#bf616a:#a3be8c:#ebcb8b:#81a1c1:#b48ead:#88c0d0:#d8dee9"
+    use_system_font = False
+    use_theme_colors = True
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]

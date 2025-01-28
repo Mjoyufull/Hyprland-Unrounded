@@ -1,0 +1,22 @@
+return {
+  "daschw/leaf.nvim",
+  name = "leaf",
+  priority = 1000,
+  config = function()
+    require("leaf").setup({
+      underlineStyle = "underline",
+      commentStyle = "italic",
+      functionStyle = "NONE",
+      keywordStyle = "italic",
+      statementStyle = "bold",
+      typeStyle = "NONE",
+      variablebuiltinStyle = "italic",
+      transparent = true,
+      colors = {},
+      overrides = {},
+      theme = "auto",
+      contrast = "high",
+    })
+    vim.cmd.colorscheme "leaf"
+  end
+}

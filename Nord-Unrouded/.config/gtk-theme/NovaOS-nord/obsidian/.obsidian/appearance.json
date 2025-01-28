@@ -1,0 +1,24 @@
+{
+  "cssTheme": "Minimal",
+  "enabledCssSnippets": [
+    "custom",
+    "No-animation",
+    "PDF-export",
+    "academic-pdf-export",
+    "UI-tweaks",
+    "ui-tweaks",
+    "number_headings",
+    "match_vscode",
+    "novaos_ui_tweak"
+  ],
+  "translucency": false,
+  "textFontFamily": "Ubuntu,Latin Modern Sans",
+  "interfaceFontFamily": "Ubuntu",
+  "monospaceFontFamily": "Monospace",
+  "baseFontSize": 15,
+  "accentColor": "",
+  "nativeMenus": true,
+  "showViewHeader": false,
+  "baseFontSizeAction": false,
+  "theme": "obsidian"
+}

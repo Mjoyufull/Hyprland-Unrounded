@@ -1,0 +1,204 @@
+{
+  "main": {
+    "id": "8303b92e5c7ad3df",
+    "type": "split",
+    "children": [
+      {
+        "id": "446984cad54195fb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d675293ba4635546",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Scratchpad.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "d9aeb4280a2c2d08",
+    "type": "split",
+    "children": [
+      {
+        "id": "281bb42a4e3e314b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8a8b7a8df1df37d4",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b2671256a6aa85df",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "697d3d6b2172979e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "ideas",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "397342d7f4bdf654",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "d35ca1f0df1afd36",
+    "type": "split",
+    "children": [
+      {
+        "id": "f434834d50971a90",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "96b2d9010676ffec",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          },
+          {
+            "id": "7947bfbe52180808",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Scratchpad.md"
+              }
+            }
+          },
+          {
+            "id": "5709b67c1ca2b6ee",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Scratchpad.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7838bc936f21b339",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 264.5,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "command-palette:Open command palette": false,
+      "templates:Insert template": false,
+      "homepage:Open homepage": false,
+      "cmdr:Commander: Sync": false,
+      "cmdr:Open files with commands: Todo": false,
+      "cmdr:Obsidian Git: Pull": false
+    }
+  },
+  "active": "d675293ba4635546",
+  "lastOpenFiles": [
+    "Scratchpad.md",
+    "Science/1. Cross-discipline/Untitled.md",
+    "Science/1. Cross-discipline/Logic",
+    "Computers/Hardware/Hardware-Software Co-design.md",
+    "Computers/Hardware/Xilinx/The Xilinx Suite.md",
+    "Computers/Hardware/Xilinx/Vivado Basics.md",
+    "Computers/Hardware/Xilinx/Vitis Basics.md",
+    "Computers/Hardware/PLCs.md",
+    "Computers/Hardware/CPUs.md",
+    "Computers/Hardware/HW-SW Co-design.md",
+    "Computers/Hardware/Tcl.md",
+    "Computers/Programming/Languages/C/C Basics.md",
+    "Computers/Hardware/Interfaces and Protocols.md",
+    "Computers/Hardware/Xilinx/Vivado Installation.md",
+    "Computers/Hardware/Xilinx/Constraints Files.md",
+    "Computers/Hardware/FPGAs.md",
+    "Meta/Personal/Clothing.md",
+    "Crafts/Leatherworking.md",
+    "Crafts/Woodworking.md",
+    "Meta/Personal/Contacts.md",
+    "Meta/Personal/Accounts.md",
+    "Computers/Storage/Digital Storage.md",
+    "Computers/Storage/Logical Volume Manager.md",
+    "Computers/Storage/RAID Storage.md",
+    "Computers/Storage/Storage Arrays.md",
+    "Computers/Storage/Volume Groups 1.md",
+    "Computers/Storage",
+    "Assets/Physics/Photonics/light_matter_interaction.svg",
+    "Assets/Physics/Photonics/atom_energy_bands.svg",
+    "Assets/Physics/Photonics/Pasted image 20231009104419.png",
+    "Assets/Physics/Photonics/Pasted image 20230920084418.png",
+    "Assets/Physics/Photonics/Pasted image 20230920084343.png",
+    "Assets/Physics/Photonics/Pasted image 20230920083628.png",
+    "Assets/Physics/Photonics/Pasted image 20230920084255.png",
+    "Assets/Physics/Photonics/Pasted image 20230918105057.png",
+    "Assets/Physics/Photonics/Pasted image 20230918104504.png",
+    "Assets/Physics/Photonics/Pasted image 20230918102947.png",
+    "Computers/Programming/Languages/C",
+    "Untitled.canvas",
+    "Domestics/Dependency Map.canvas",
+    "Crafts/Bookbinding",
+    "Business/Specific/MentorDK",
+    "Business/Specific",
+    "Business/Untitled Folder",
+    "Meta/Personal",
+    "Meta/Contacts",
+    "Meta/Personal/Everyday Advice",
+    "Business Model.canvas"
+  ]
+}

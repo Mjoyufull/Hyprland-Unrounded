@@ -1,0 +1,91 @@
+#Bashtop theme with default colors and black background
+#by aristocratos
+
+# Colors should be in 6 or 2 character hexadecimal or single spaced rgb decimal: "#RRGGBB", "#BW" or "0-255 0-255 0-255"
+# example for white: "#FFFFFF", "#ff" or "255 255 255".
+
+# All graphs and meters can be gradients
+# For single color graphs leave "mid" and "end" variable empty.
+# Use "start" and "end" variables for two color gradient
+# Use "start", "mid" and "end" for three color gradient
+
+# Main background, empty for terminal default, need to be empty if you want transparent background
+theme[main_bg]="#191724"
+
+# Main text color
+theme[main_fg]="#E0DEF4"
+
+# Title color for boxes
+theme[title]="#E0DEF4"
+
+# Higlight color for keyboard shortcuts
+theme[hi_fg]="#EBBCBA"
+
+# Background color of selected item in processes box
+theme[selected_bg]="#403D52"
+
+# Foreground color of selected item in processes box
+theme[selected_fg]="#E0DEF4"
+
+# Color of inactive/disabled text
+theme[inactive_fg]="#E0DEF4"
+
+# Misc colors for processes box including mini cpu graphs, details memory graph and details status text
+theme[proc_misc]="#403D52"
+
+# Cpu box outline color
+theme[cpu_box]="#403D52"
+
+# Memory/disks box outline color
+theme[mem_box]="#403D52"
+
+# Net up/down box outline color
+theme[net_box]="#403D52"
+
+# Processes box outline color
+theme[proc_box]="#403D52"
+
+# Box divider line and small boxes line color
+theme[div_line]="#403D52"
+
+#================= Meters ==================
+# Mem/Disk used meter
+theme[used_start]="#31748F"
+theme[used_mid]="#F6C177"
+theme[used_end]="#EB6F92"
+
+# Mem/Disk available meter
+theme[available_start]="#EB6F92"
+theme[available_mid]="#F6C177"
+theme[available_end]="#31748F"
+
+# Mem/Disk cached meter
+theme[cached_start]="#31748F"
+theme[cached_mid]="#31748F"
+theme[cached_end]="#31748F"
+
+# Mem/Disk free meter
+theme[free_start]="#EB6F92"
+theme[free_mid]="#F6C177"
+theme[free_end]="#31748F"
+
+#================== Graphs ==================
+# Temperature graph colors
+theme[temp_start]="#31748F"
+theme[temp_mid]="#F6C177"
+theme[temp_end]="#31748F"
+
+# CPU graph colors
+theme[cpu_start]="#EBBCBA"
+theme[cpu_mid]="#F6C177"
+theme[cpu_end]="#31748F"
+
+# Download graph colors
+theme[download_start]="#31748F"
+theme[download_mid]="#F6C177"
+theme[download_end]="#31748F"
+
+# Upload graph colors
+theme[upload_start]="#31748F"
+theme[upload_mid]="#F6C177"
+theme[upload_end]="#31748F"
