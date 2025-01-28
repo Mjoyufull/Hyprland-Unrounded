@@ -68,7 +68,7 @@ Make sure you have the following applications installed, as needed:
 
 ### Step 4: Apply the Nord Theme
 
-- **GTK**: Apply the Nord GTK theme which is the Whitesir theme for both GTK3 and GTK4 applications. i would advise you to go to their [repo](https://github.com/vinceliuice/WhiteSur-gtk-theme) and use their install script
+- **GTK**: Apply the Nord GTK theme which is the NovaOS theme for both GTK3 and GTK4 applications, found in the gtkthemes dir
 - **hyprpanel**: hyprpanel config, Customize hyprpanel to match the Nord theme. My configuration includes workspace indicators, a timer, Wi-Fi, Bluetooth, mic, and audio level indicators.
 - **Rofi**: Use the custom palette and theme included in the `rofi` and `palletes/rofi` directories.
 - **Kitty**: Configure Kitty terminal with the Nord theme and apply Zsh settings that generate pixel art of Pokémon on launch.
