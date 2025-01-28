@@ -42,7 +42,7 @@ Ensure you have Hyprland installed on your system. Follow the instructions on th
 ### Step 2: Clone This Repository
 Clone this repository to your system:
 ```bash
-git clone https://github.com/Mjoyufull/hyprland-nord.git
+git clone https://github.com/Mjoyufull/Hyprland-Unrounded
 ```
 Copy the relevant configuration files to your home directory, usually `~/.config/`.
 
