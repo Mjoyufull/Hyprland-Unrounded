@@ -1,0 +1,14 @@
+#!/bin/sh
+
+for ifname in eth0 eth1 wlan0; do
+    if ip l show $ifname > /dev/null 2>&1; then
+        STATUS="$(ip l show $ifname | awk '{print $9}')"
+        if [[ $STATUS == UP ]]; then
+            ADDR="$(ip -4 addr show $ifname | grep -oP '(?<=inet\s)\d+(\.\d+){3}')"
+            echo "{\"text\": \"$ifname: $ADDR\", \"class\": \"connected\"}"
+            exit 0
+        fi
+    fi
+done
+
+echo "{\"text\": \"disconnected\", \"class\": \"disconnected\"}"

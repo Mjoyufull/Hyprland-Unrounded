@@ -1,0 +1,95 @@
+{
+
+    "layer": "top",
+    "position": "top",
+    "margin-top": 4,
+    "margin-left": 8,
+    "margin-right": 8,
+    "height": 20,
+    "spacing": 5,
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio","tray","custom/network", "cpu", "memory", "backlight", "battery"], 
+   
+    "clock": {
+    "format": "{:%a - %I:%M %p - %m/%d/%Y}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% "
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": [""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon} ",
+        "format-charging": "{capacity}% 󰂄 ",
+        "format-plugged": "{capacity}%  ",
+        "format-alt": "{time} {icon} ",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "custom/network": {
+        "exec": "waybarNetworkInfo",
+        "interval": 30,
+        "return-type": "json"
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "󰂰",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+},
+  "sway/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "⼀",
+      "2": "二",
+      "3": "三",
+      "4": "四",
+      "5": "五",
+      "6": "六",
+      "7": "七",
+      "8": "八",
+      "9": "九",
+      "10": "十"
+    },
+
+    "sort-by-number": true,
+    "disable-scroll": true
+  },
+  "sway/mode": {
+    "format": "{}"
+  },
+    },
+   "tray": {
+   "icon-size":20
+},
+
+}

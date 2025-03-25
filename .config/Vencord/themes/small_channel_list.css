@@ -1,0 +1,15 @@
+/* small channel list */
+.sidebar_a4d4d9 {
+    width: 0px!important;
+    padding-left: var(--channel-mini)!important;
+}
+.sidebar_a4d4d9:hover {
+    width: var(--channel-max)!important;
+    padding-left: initial!important;
+}
+/* edit it */
+:root {
+    --channel-mini: 24px;
+    --channel-max: 240px; /* normal channel list size */
+}
+

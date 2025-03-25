@@ -1,0 +1,117 @@
+/**
+ * @name system24 (nord)
+ * @description A tui-style discord theme. Based on the Nord color palette.
+ * @author refact0r (Nord adaptation)
+ * @version 1.0.0
+ * @invite nz87hXyvcy
+ * @website https://github.com/refact0r/system24
+ * @source https://github.com/refact0r/system24/blob/master/flavors/nord.theme.css
+ * @authorId 508863359777505290
+ * @authorLink https://www.refact0r.dev
+*/
+
+/* import theme modules */
+@import url('https://refact0r.github.io/system24/src/main.css'); /* main theme css. DO NOT REMOVE */
+
+
+
+
+/* customize things here */
+:root {
+    --font: 'JetBrainsMono Nerd Font'; /* UI font name. it must be installed on your system. */
+    letter-spacing: -0.05ch; /* decreases letter spacing for better readability. */
+    font-weight: 300; /* UI font weight. */
+    --label-font-weight: 500; /* font weight for panel labels. */
+    --corner-text: 'nord24'; /* custom text to display in the corner. only works on windows. */
+    --pad: 16px; /* padding between panels. */
+    --txt-pad: 10px; /* padding inside panels to prevent labels from clipping */
+    --panel-roundness: 0px; /* corner roundness of panels. ONLY WORKS IF unrounding.css IS REMOVED (see above). */
+
+    /* background colors - using Nord Polar Night palette */
+    --bg-0: #2E3440; /* main background color - Polar Night 0 */
+    --bg-1: #3B4252; /* background color for secondary elements - Polar Night 1 */
+    --bg-2: #434C5E; /* color of neutral buttons - Polar Night 2 */
+    --bg-3: #4C566A; /* color of neutral buttons when hovered - Polar Night 3 */
+
+    /* state modifiers */
+    --hover: color-mix(in oklch, var(--txt-3), transparent 80%); /* color of hovered elements. */
+    --active: color-mix(in oklch, var(--txt-3), transparent 60%); /* color of elements when clicked. */
+    --selected: var(--active); /* color of selected elements. */
+
+    /* text colors - using Nord Snow Storm palette */
+    --txt-dark: var(--bg-0); /* color of dark text on colored backgrounds. */
+    --txt-link: var(--cyan); /* color of links. */
+    --txt-0: #ECEFF4; /* color of bright/white text - Snow Storm 3 */
+    --txt-1: #E5E9F0; /* main text color - Snow Storm 2 */
+    --txt-2: #D8DEE9; /* color of secondary text - Snow Storm 1 */
+    --txt-3: #4C566A; /* color of muted text - Polar Night 3 */
+
+    /* accent colors */
+    --acc-0: var(--frost-1); /* main accent color. */
+    --acc-1: var(--frost-1-1); /* color of accent buttons when hovered. */
+    --acc-2: var(--frost-1-2); /* color of accent buttons when clicked. */
+
+    /* borders */
+    --border-width: 2px; /* panel border thickness. */
+    --border-color: var(--bg-2); /* panel border color. */
+    --border-hover-color: var(--acc-0); /* panel border color when hovered. */
+    --border-transition: 0.2s ease; /* panel border transition. */
+
+    /* status dot colors - using Nord Aurora palette */
+    --online-dot: var(--green); /* color of online dot. */
+    --dnd-dot: var(--red); /* color of do not disturb dot. */
+    --idle-dot: var(--yellow); /* color of idle dot. */
+    --streaming-dot: var(--purple); /* color of streaming dot. */
+
+    /* mention/ping and message colors */
+    --mention-txt: var(--acc-0); /* color of mention text. */
+    --mention-bg: color-mix(in oklch, var(--acc-0), transparent 90%); /* background highlight of mention text. */
+    --mention-overlay: color-mix(in oklch, var(--acc-0), transparent 90%); /* overlay color of messages that mention you. */
+    --mention-hover-overlay: color-mix(in oklch, var(--acc-0), transparent 95%); /* overlay color of messages that mention you when hovered. */
+    --reply-overlay: var(--active); /* overlay color of message you are replying to. */
+    --reply-hover-overlay: var(--hover); /* overlay color of message you are replying to when hovered. */
+
+    /* Nord color shades - Aurora */
+    --red: #BF616A;
+    --red-1: #a35158;
+    --red-2: #874147;
+    
+    --orange: #D08770;
+    --orange-1: #b17260;
+    --orange-2: #925d50;
+    
+    --yellow: #EBCB8B;
+    --yellow-1: #c7ac75;
+    --yellow-2: #a38d60;
+    
+    --green: #A3BE8C;
+    --green-1: #8ba277;
+    --green-2: #738662;
+    
+    --purple: #B48EAD;
+    --purple-1: #987892;
+    --purple-2: #7c6277;
+
+    /* Nord color shades - Frost */
+    --frost-1: #8FBCBB; /* Frost 0 */
+    --frost-1-1: #7aa09f;
+    --frost-1-2: #658483;
+    
+    --frost-2: #88C0D0; /* Frost 1 */
+    --frost-2-1: #74a3b1;
+    --frost-2-2: #608692;
+    
+    --frost-3: #81A1C1; /* Frost 2 */
+    --frost-3-1: #6d88a4;
+    --frost-3-2: #597087;
+    
+    --frost-4: #5E81AC; /* Frost 3 */
+    --frost-4-1: #506e92;
+    --frost-4-2: #425b78;
+
+    /* Aliases for compatibility */
+    --pink: var(--red);
+    --pink-1: var(--red-1);
+    --pink-2: var(--red-2);
+    --cyan: var(--frost-2);
+}

@@ -1,0 +1,227 @@
+set period 10
+set watch
+
+set info size
+set dircounts
+
+# Field separator
+# This will shit itself if we encounter a file with \n in its name
+# but this is so unlikely to happen that I will ignore such possibility (clueless)
+set ifs "\n"
+set filesep "\n"
+
+set tabstop 4
+set scrolloff 4
+
+set shell bash
+
+set user_runninginlf 1
+
+# Previewer config
+set previewer ~/.config/lf/previewer.sh
+# File opener config
+cmd open %printf '\e[1;31mUSE o or O to open!!!\e[0m'
+
+cmd copy-path &{{
+  printf "$f" | wl-copy
+}}
+
+cmd copy-file %{{
+  file_size=$(stat -c %s "$f")
+  size_limit=$((5 * 1024 * 1024)) # 5 megs
+  if [ $file_size -gt $size_limit ]; then
+    printf "\033[1;31m[copy-file] won't copy: file size too big\033[0m\n" >&2
+    exit 1
+  fi
+
+  ftype="$(file --brief --mime -- "$f")"
+  case "$ftype" in
+    image/jxl*) magick jxl:- png:- <"$f" | wl-copy -t image/png 2>/dev/null ;;
+    image/jpeg*) magick jpeg:- png:- <"$f" | wl-copy -t image/png 2>/dev/null ;;
+    image/webp*) magick webp:- png:- <"$f" | wl-copy -t image/png 2>/dev/null ;;
+    *) wl-copy <"$f" 2>/dev/null ;;
+  esac
+}}
+
+cmd make-file %exec ~/.config/lf/scripts/make-file.sh
+cmd make-dir %exec ~/.config/lf/scripts/make-dir.sh
+cmd make-symlink %exec ~/.config/lf/scripts/make-symlink.sh
+cmd make-file-from-clibpoard %exec ~/.config/lf/scripts/make-file-from-clibpoard.sh
+
+cmd del %exec ~/.config/lf/scripts/delete.sh
+cmd rename %exec ~/.config/lf/scripts/rename.sh
+cmd paste %exec ~/.config/lf/scripts/paste.sh
+
+cmd paste-hardlink %exec ~/.config/lf/scripts/paste-link.sh hard
+cmd paste-symlink-absolute %exec ~/.config/lf/scripts/paste-link.sh symbolic absolute
+cmd paste-symlink-relative %exec ~/.config/lf/scripts/paste-link.sh symbolic relative
+
+cmd chmod %chmod +x "$f"
+cmd du %du -hs . 2>/dev/null
+cmd clone %cp -a "${f}" "${f}.copy"
+
+cmd quit-wrapped :{{
+  cd ~
+  quit
+}}
+
+cmd quit-cd &{{
+  echo -n "$PWD" >"$lf_cd_file"
+  lf -remote "send $id :quit-wrapped"
+}}
+
+cmd goto-symlink-target &{{
+  if [ ! -L "$f" ]; then
+    exit
+  fi
+
+  target="$(realpath "$f")"
+  if [ -f "$target" ]; then
+    target_dir="$(dirname "$target")"
+    lf -remote "send $id select $(printf '%q' "$target")"
+  elif [ -d "$target" ]; then
+    lf -remote "send $id cd $(printf '%q' "$target")"
+  fi
+}}
+
+cmd fzf-jump ${{
+  # dont make -maxdepth too big uwu
+  res="$(find . -xdev -depth -maxdepth 6 2>/dev/null | fzf --reverse --no-clear --scheme=path)"
+  if [ -z "$res" ]; then exit; fi
+
+  if [ -d "$res" ]; then
+    cmd="cd"
+  else
+    cmd="select"
+    if [[ "$(basename "$res")" =~ ^. ]]; then
+      lf -remote "send $id set hidden true"
+    fi
+  fi
+  # no idea what this sed does lol I copied it from lf wiki xdd
+  res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+  lf -remote "send $id $cmd \"$res\""
+}}
+
+cmd fzf-bookmarks ${{
+  if [ ! -f ~/.config/gtk-3.0/bookmarks ]; then exit; fi
+
+  res="$(sed -e 's/file:\/\///' ~/.config/gtk-3.0/bookmarks | fzf --reverse --no-clear)"
+  if [ -z "$res" ]; then exit; fi
+
+  # no idea what this sed does lol I copied it from lf wiki xdd
+  res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+  # assuming that there are only directories in bookmarks
+  lf -remote "send $id cd \"$res\""
+}}
+
+cmd fzf-history ${{
+  source ~/.config/lf/scripts/common-defs.sh
+
+  hist_file="${_lf_data_dir}"/history
+  if [ -r "$hist_file" ]; then
+    selected="$(cat "$hist_file" | fzf)"
+    if [ -n "$selected" ]; then
+      lf -remote "send $id $selected"
+    fi
+  fi
+}}
+
+cmd drag ${{
+  source ~/.config/lf/scripts/common-defs.sh
+
+  ripdrag --no-click --and-exit $fx
+}}
+
+cmd sudoedit ${{
+    tool="$(command -v sudo 2>/dev/null)"
+    tool="$(command -v doas 2>/dev/null)"
+    if [ -z "$tool" ]; then
+        printf "\033[1;31m[sudoedit] neither doas nor sudo were found\033[0m\n" >&2
+        read
+        exit 1
+    fi
+
+    tmpfile="$(mktemp)"
+    if [ ! -f "$tmpfile" ]; then
+        printf "\033[1;31m[sudoedit] %s does not exist\033[0m\n" "$tmpfile" >&2
+        read
+        exit 1
+    fi
+    if [ -r "$f" ]; then
+        cp "$f" "$tmpfile"
+    else
+        "$tool" cp "$f" "$tmpfile"
+        chown "$(whoami):" "$tmpfile"
+    fi
+    chmod 600 "$tmpfile"
+
+    "${EDITOR:-vi}" "$tmpfile"
+    [ -f "$tmpfile" ] && cmp -s "$f" "$tmpfile" || "$tool" tee "$f" >/dev/null <"$tmpfile"
+
+    rm "$tmpfile"
+}}
+
+map y
+map yy copy
+map yp copy-path
+map yf copy-file
+
+map p
+map pp paste
+map pl paste-symlink-absolute
+map pL paste-symlink-relative
+map ph paste-hardlink
+
+map m
+map md make-dir
+map mf make-file
+map ml make-symlink
+map mc make-file-from-clibpoard
+
+map C unselect
+
+map q quit-wrapped
+cmd q :quit-wrapped
+map Q quit-cd
+
+map gt goto-symlink-target
+map g/ :cd /
+
+map f fzf-jump
+map b fzf-bookmarks
+map <c-r> fzf-history
+
+map a %~/.config/lf/scripts/mount-archive.sh
+
+map E sudoedit
+
+map . :set hidden!
+
+map o $~/.config/lf/opener.sh "$f"
+map O %~/.config/lf/scripts/open-in-new-tmux-pane.sh ~/.config/lf/opener.sh "$f"
+
+map i
+map is :{{ set info size; }}
+map ic :{{ set info ctime; }}
+map ip :{{ set info perm; }}
+map iu :{{ set info user; }}
+map ig :{{ set info group; }}
+
+map s
+map sN :{{ set sortby natural; }}
+map sn :{{ set sortby name; }}
+map ss :{{ set sortby size; }}
+map sc :{{ set sortby ctime; }}
+map se :{{ set sortby ext; }}
+
+map x
+map xx %~/.config/lf/scripts/unarchive.sh -s "$f"
+map xX %~/.config/lf/scripts/unarchive.sh "$f"
+
+# cleanup on-quit hook
+&~/.config/lf/scripts/add-hook.sh 'on-quit' 'source ~/.config/lf/scripts/common-defs.sh; if [ -n "$_lf_client_data_dir" ]; then rm -r "$_lf_client_data_dir"; fi'
+
+# https://github.com/gokcehan/lf/issues/442
+cmap <backspace> cmd-left
+cmap <c-l> cmd-right
+

@@ -1,0 +1,15 @@
+/* small member list */
+.container_cbd271 {
+    width: 0px!important;
+    padding-left: var(--members-min)!important;
+}
+.container_cbd271:hover {
+    width: var(--members-max)!important;
+    padding-left: initial!important;
+}
+/* edit it */
+:root {
+    --members-min: 24px;
+    --members-max: 240px; /* normal member list size */
+}
+

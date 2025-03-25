@@ -1,0 +1,36 @@
+@import url("https://mwittrien.github.io/BetterDiscordAddons/Themes/DiscordRecolor/DiscordRecolor.css");
+
+:root {
+    --settingsicons: 1; /* Show settings icons */
+    --font: "JetBrainsMonoNL Nerd Font"; /* Your preferred font */
+
+    /* Accent Colors */
+    --accentcolor: 167,192,128; /* Main accent */
+    --accentcolor2: 223,105,186; /* Secondary accent (Boost Pink) */
+    --linkcolor: 58,148,197; /* Link color */
+    --mentioncolor: 53,167,124; /* Mention highlight */
+    --successcolor: 141,161,1; /* Success (green) */
+    --warningcolor: 223,160,0; /* Warnings */
+    --dangercolor: 248,85,82; /* Errors/Danger */
+
+    /* Text Colors */
+    --textbrightest: 211,198,170; /* Primary text (channel names, usernames, important text) */
+    --textbrighter: 211,198,170; /* Messages, “typing...” indicator */
+    --textbright: 133,146,137; /* Replies, blocked messages, icons */
+    --textdark: 133,146,137; /* Unread channels, connected voice state */
+    --textdarker: 133,146,137; /* Real names, timestamps */
+    --textdarkest: 133,146,137; /* File sizes, less important text */
+
+    /* Backgrounds */
+    --backgroundaccent: 45,53,59; /* Background Accent */
+    --backgroundprimary: 35,42,46; /* Main Background */
+    --backgroundsecondary: 45,53,59; /* Secondary Background */
+    --backgroundsecondaryalt: 45,53,59; /* Tertiary Background */
+    --backgroundtertiary: 45,53,59; /* Quaternary Background */
+    --backgroundfloating: 61,72,77; /* Popups, menus, floating elements */
+
+    /* Status Line Colors */
+    --statusline1: 167,192,128; /* Active tab */
+    --statusline2: 211,198,170; /* Secondary indicator */
+    --statusline3: 230,126,128; /* Errors, important notifications */
+}

@@ -1,0 +1,5 @@
+configuration {
+    font: "JetBrains Mono regular 11";
+}
+
+@theme "nord.rasi"
