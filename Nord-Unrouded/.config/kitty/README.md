@@ -1,1 +1,0 @@
-localTheme/themes directory required for theme changing.

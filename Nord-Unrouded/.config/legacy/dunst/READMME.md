@@ -1,1 +1,0 @@
-copy the dunstrc file to ~/.config/dunst/

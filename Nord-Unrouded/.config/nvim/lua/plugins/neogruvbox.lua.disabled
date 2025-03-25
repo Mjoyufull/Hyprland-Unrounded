@@ -1,8 +1,0 @@
-return {
-  "almo7aya/neogruvbox.nvim",
-  name = "neogruvbox",
-  priority = 1000,
-  config = function()
-    vim.cmd.colorscheme "neogruvbox"
-  end
-}
