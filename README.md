@@ -9,7 +9,6 @@
 ## Overview
 
 This repository contains the configuration files I used to customize my Hyprland setup. The primary focus is on creating a cohesive look with a Nord color scheme applied across various tools and applications. Below, you'll find a list of the configuration directories and files, as well as instructions on how to set up everything to achieve the same look.
-
 ## Directories and Configurations
 
 Here’s a quick overview of the directories and tools used in this setup:
@@ -26,13 +25,14 @@ Here’s a quick overview of the directories and tools used in this setup:
 - **gtk-4.0**: GTK4 configurations, applying the Nord theme to GTK4 apps.
 - **hypr**: Core Hyprland configuration files.
 - **kitty**: Terminal emulator configured with a Nord theme and custom Zsh settings.
-- **neofetch**: Displays system information with a custom configuration.
-- **palletes/rofi**: Custom color palettes for Rofi to match the Nord theme.
+- **fastfetch**: Displays system information with a custom configuration.
+- **palletes/fuzzel**: Custom color palettes for fuzzel to match the Nord theme.
 - **qalculate**: Custom configurations for the calculator app.
 - **qt6ct**: Configuration for Qt6 apps to ensure they follow the Nord theme.
-- **rofi**: Rofi application launcher with custom themes and settings.
+- **fuzzel**: fuzzel application launcher with custom themes and settings.
 - **Hyprpanel**: Custom status bar configuration, integrating workspace indicators, system info, and more.
 - **wlogout**: Logout menu configuration, also themed to fit the overall look.
+- **mpvpaper**: wallpaper daemon built ontop of mpvpaper supports both images and video wallpapers with a custom script for it on launch.
 
 ## Installation and Setup
 
@@ -59,18 +59,18 @@ Make sure you have the following applications installed, as needed:
 - **dunst**: Notification daemon.
 - **fastfetch**: System information fetcher.
 - **kitty**: Terminal emulator.
-- **neofetch**: System information display.
+- **fastfetch**: System information display.
 - **qalculate**: Calculator app.
 - **qt6ct**: Qt6 Configuration Tool.
-- **rofi**: Application launcher.
+- **fuzzel**: Application launcher.
 - **Hyprpanel**: top bar panel.
 - **wlogout**: Logout menu.
+- **mpvpaper**: wallpaper daemon.
 
 ### Step 4: Apply the Nord Theme
 
 - **GTK**: Apply the Nord GTK theme which is the NovaOS theme for both GTK3 and GTK4 applications, found in the gtkthemes dir
 - **hyprpanel**: hyprpanel config, Customize hyprpanel to match the Nord theme. My configuration includes workspace indicators, a timer, Wi-Fi, Bluetooth, mic, and audio level indicators.
-- **Rofi**: Use the custom palette and theme included in the `rofi` and `palletes/rofi` directories.
 - **Kitty**: Configure Kitty terminal with the Nord theme and apply Zsh settings that generate pixel art of Pokémon on launch.
 
 ### Step 5: Custom Scripts and Keybinds
@@ -107,7 +107,7 @@ into hyprpanel.
 ## Troubleshooting and Tips
 
 - **Cava Issues**: Ensure `sudo modprobe snd_aloop` is run if you experience issues with Cava not syncing with your audio.
-- **Rofi Config**: If the Rofi theme doesn't apply correctly, double-check the `palletes/rofi` directory and ensure it’s correctly referenced in your config files.
+- **fuzzel Config**: If the fuzzel theme doesn't apply correctly, double-check the `palletes/fuzzel` directory and ensure it’s correctly referenced in your config files.
 
 ## Conclusion
 
