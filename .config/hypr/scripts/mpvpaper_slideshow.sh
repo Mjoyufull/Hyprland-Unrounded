@@ -1,5 +1,5 @@
 #!/bin/bash
-# mpvpaper_slideshow.sh – advanced wallpaper slideshow for mpvpaper on Hyprland
+# mpvpaper_slideshow.sh – seamless wallpaper transitions with delayed process cleanup
 set -euo pipefail
 
 ##########################
@@ -7,7 +7,6 @@ set -euo pipefail
 ##########################
 wallpaperDirs=(
     "/home/chris/Pictures/newpc/mikunewgen/"
-
 )
 imageExts=("jpg" "jpeg" "png" "bmp" "gif")
 videoExts=("mp4" "mkv" "webm" "avi")
@@ -16,21 +15,20 @@ videoExts=("mp4" "mkv" "webm" "avi")
 videoWeight=60
 imageWeight=40
 
-# Check weights add to 100.
 if (( videoWeight + imageWeight != 100 )); then
     echo "ERROR: Weights don't add up to 100. Seriously, this sum gen Z shit." >&2
     exit 1
 fi
 
 # Options for separate wallpapers per monitor.
-# For images: default separate (1), videos: default same on all monitors (0).
+# For images: default separate (1); videos: default same on all monitors (0).
 separate_images=1
 separate_videos=0
 
 # Video audio options.
 # Set videoMute to 1 to mute videos (default), 0 for unmuted.
 videoMute=0
-# If unmuted, specify volume (1-100), default is 30.
+# If unmuted, specify volume (1-100); default is 100.
 videoVolume=100
 
 # Transition interval in seconds (wallpaper duration)
@@ -41,7 +39,6 @@ scalingOptions="--panscan=1.0 --keepaspect"
 
 historyFile="/tmp/mpvpaper_history"
 pidFile="/tmp/mpvpaper_slideshow_pid"
-mpvPIDsFile="/tmp/mpvpaper_pids"
 logFile="/tmp/mpvpaper_slideshow.log"
 
 ##############################
@@ -53,22 +50,17 @@ log_message() {
     echo "$msg" >> "$logFile"
 }
 
-kill_old_wallpapers() {
-    if [[ -f "$mpvPIDsFile" ]]; then
-        while read -r pid; do
-            if kill -0 "$pid" 2>/dev/null; then
-                log_message "Killing old mpvpaper process $pid"
-                kill "$pid" 2>/dev/null || true
-            fi
-        done < "$mpvPIDsFile"
-        rm -f "$mpvPIDsFile"
-    fi
+# Nuke all mpvpaper processes.
+nuke_all_mpvpaper() {
+    log_message "Nuking ALL mpvpaper instances with killall."
+    killall -q mpvpaper || true
+    sleep 1
 }
 
-# Write our PID to file so the trigger scripts know which process to signal.
+# Write our PID to file so trigger scripts can signal us.
 echo $$ > "$pidFile"
 log_message "Main script PID: $$"
-trap 'rm -f "$pidFile"; kill_old_wallpapers; exit' EXIT
+trap 'rm -f "$pidFile"; nuke_all_mpvpaper; exit' EXIT
 
 ##########################################
 # Detect Connected Outputs (Monitors)    #
@@ -182,8 +174,13 @@ display_cycle() {
     read -r cycleType rest <<< "$record"
     read -r -a wallpapers <<< "$rest"
     log_message "Displaying cycle #$currentCycle ($cycleType) on monitors: ${monitors[*]}"
-    kill_old_wallpapers
-    > "$mpvPIDsFile"
+
+    # Capture current mpvpaper PIDs before launching new instances
+    old_pids=$(pgrep -x mpvpaper || true)
+    log_message "Previous mpvpaper PIDs: $old_pids"
+
+    # Launch new mpvpaper instances
+    declare -a new_pids
     for i in "${!monitors[@]}"; do
         monitor="${monitors[$i]}"
         wallpaper="${wallpapers[$i]}"
@@ -195,13 +192,29 @@ display_cycle() {
             fi
             mpvpaper -f -o "$mpv_options" "$monitor" "$wallpaper" &
         else
-            # For images, use -n to force display for the full transitionInterval and add scaling options.
             mpvpaper -f -n "$transitionInterval" -o "${scalingOptions}" "$monitor" "$wallpaper" &
         fi
-        pid=$!
-        echo "$pid" >> "$mpvPIDsFile"
-        log_message "Launched mpvpaper on $monitor with PID $pid"
+        new_pid=$!
+        new_pids+=($new_pid)
+        log_message "Launched mpvpaper on $monitor with PID $new_pid"
     done
+
+    # Delayed kill of old instances (5-second delay)
+    (
+        sleep 5  # Let new wallpapers fully render first
+        if [ -n "$old_pids" ]; then
+            log_message "Delayed termination of old PIDs: $old_pids"
+            # Only kill if they're still running
+            for pid in $old_pids; do
+                if ps -p "$pid" > /dev/null; then
+                    kill "$pid" 2>/dev/null && log_message "Killed PID $pid" || true
+                fi
+            done
+        fi
+    ) &  # Run in background to avoid blocking
+    disown  # Prevent zombie processes if script exits
+
+    log_message "Scheduled old instance termination in 5 seconds"
 }
 
 #######################################
@@ -237,7 +250,6 @@ trap 'log_message "SIGUSR2 caught - triggering previous cycle"; previous_cycle' 
 ##########################
 # Custom Sleep That Reacts to Signals
 ##########################
-# This function sleeps in 1-second increments so signals are caught promptly.
 sleep_with_signals() {
     local remaining=$1
     while (( remaining > 0 )); do
